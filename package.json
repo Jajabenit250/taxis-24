@@ -1,0 +1,19 @@
+{
+  "name": "j-taxis",
+  "version": "1.0.0",
+  "description": "They would like to disrupt the taxi industry in Rwanda by providing a white-label solution to the",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jajabenit250/j-taxis.git"
+  },
+  "author": "Benit Havugimana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jajabenit250/j-taxis/issues"
+  },
+  "homepage": "https://github.com/Jajabenit250/j-taxis#readme"
+}
