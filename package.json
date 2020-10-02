@@ -4,7 +4,12 @@
   "description": "They would like to disrupt the taxi industry in Rwanda by providing a white-label solution to the",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "NODE_ENV=development nodemon --exec babel-node ./src/index.js",
+    "db-migrate": "npx sequelize db:migrate",
+    "db-undo-migration": "npx sequelize db:migrate:undo:all",
+    "db-seed-test": "NODE_ENV=testing npx sequelize-cli db:seed:undo:all && NODE_ENV=testing sequelize db:seed:all",
+    "db-seed-dev": "npx sequelize-cli db:seed:undo:all && npx sequelize db:seed:all"
   },
   "repository": {
     "type": "git",
@@ -15,5 +20,21 @@
   "bugs": {
     "url": "https://github.com/Jajabenit250/j-taxis/issues"
   },
-  "homepage": "https://github.com/Jajabenit250/j-taxis#readme"
+  "homepage": "https://github.com/Jajabenit250/j-taxis#readme",
+  "dependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/node": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.6.0",
+    "@babel/preset-env": "^7.7.4",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "fs": "0.0.1-security",
+    "node-geocoder": "^3.27.0",
+    "node-open-geocoder": "^4.0.1",
+    "nodemon": "^2.0.1",
+    "path": "^0.12.7",
+    "sequelize": "^6.3.5"
+  }
 }
