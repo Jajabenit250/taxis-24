@@ -32,9 +32,9 @@
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
     "node-geocoder": "^3.27.0",
-    "node-open-geocoder": "^4.0.1",
     "nodemon": "^2.0.1",
     "path": "^0.12.7",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0"
   }
 }
