@@ -1,28 +1,38 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Trip extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  };
-  Trip.init({
+  const trip = sequelize.define('trip', {
     driverId: DataTypes.INTEGER,
     riderId: DataTypes.INTEGER,
     from: DataTypes.INTEGER,
     to: DataTypes.INTEGER,
     distance: DataTypes.STRING,
-    status: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Trip',
-  });
-  return Trip;
+    status: DataTypes.STRING,
+  }, {});
+  trip.associate = function (models) {
+    trip.belongsTo(
+      models.user,
+      { foreignKey: 'driverId' },
+      { onDelete: 'cascade' },
+      { onUpdate: 'cascade' },
+    );
+    trip.belongsTo(
+      models.user,
+      { foreignKey: 'riderId' },
+      { onDelete: 'cascade' },
+      { onUpdate: 'cascade' },
+    );
+    trip.belongsTo(
+      models.location,
+      { foreignKey: 'from' },
+      { onDelete: 'cascade' },
+      { onUpdate: 'cascade' },
+    );
+    trip.belongsTo(
+      models.location,
+      { foreignKey: 'to' },
+      { onDelete: 'cascade' },
+      { onUpdate: 'cascade' },
+    );
+  };
+  return trip;
 };
+

@@ -9,7 +9,13 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       tripId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        references: {
+          model: 'trips',
+          key: 'id',
+        },
       },
       cost: {
         type: Sequelize.STRING

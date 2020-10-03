@@ -1,25 +1,16 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Invoice extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  };
-  Invoice.init({
+  const invoice = sequelize.define('invoice', {
     tripId: DataTypes.INTEGER,
     cost: DataTypes.STRING,
     status: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Invoice',
-  });
-  return Invoice;
+  }, {});
+  invoice.associate = function (models) {
+    invoice.belongsTo(
+      models.trip,
+      { foreignKey: 'tripId' },
+      { onDelete: 'cascade' },
+      { onUpdate: 'cascade' },
+    );
+  };
+  return invoice;
 };

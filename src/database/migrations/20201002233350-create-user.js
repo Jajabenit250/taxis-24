@@ -18,7 +18,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       locationId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        references: {
+          model: 'locations',
+          key: 'id',
+        },
       },
       role: {
         type: Sequelize.STRING
