@@ -10,7 +10,6 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', Route);
-app.get('/home', (req, res) => res.status(200).send({ status: 200, message: 'Welcome to Soma!' }));
 app.use((req, res) => res.status(404).send({
   status: 404,
   error: 'route Not Found!',
