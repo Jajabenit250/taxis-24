@@ -1,26 +1,32 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Invoices', {
+    await queryInterface.createTable('Locations', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      tripId: {
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
-        references: {
-          model: 'Trips',
-          key: 'id',
-        },
-      },
-      cost: {
+      latitude: {
         type: Sequelize.STRING
       },
-      status: {
+      longitude: {
+        type: Sequelize.STRING
+      },
+      country: {
+        type: Sequelize.STRING
+      },
+      city: {
+        type: Sequelize.STRING
+      },
+      state: {
+        type: Sequelize.STRING
+      },
+      streetName: {
+        type: Sequelize.STRING
+      },
+      streetNumber: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -34,6 +40,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Invoices');
+    await queryInterface.dropTable('Locations');
   }
 };

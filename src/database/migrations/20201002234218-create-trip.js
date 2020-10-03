@@ -13,7 +13,7 @@ module.exports = {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
         references: {
-          model: 'users',
+          model: 'Users',
           key: 'id',
         },
       },
@@ -22,7 +22,7 @@ module.exports = {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
         references: {
-          model: 'users',
+          model: 'Users',
           key: 'id',
         },
       },
@@ -31,7 +31,7 @@ module.exports = {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
         references: {
-          model: 'locations',
+          model: 'Locations',
           key: 'id',
         },
       },
@@ -40,7 +40,7 @@ module.exports = {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
         references: {
-          model: 'locations',
+          model: 'Locations',
           key: 'id',
         },
       },
