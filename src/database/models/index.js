@@ -1,11 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import Sequelize from 'sequelize';
-import { development, production, test } from '../config/config';
+import { development, test } from '../config/config';
 
 const environment = {
   development,
-  production,
   test,
 };
 const basename = path.basename(__filename);
