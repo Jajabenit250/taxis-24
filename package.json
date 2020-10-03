@@ -6,8 +6,8 @@
   "scripts": {
     "test": "npm test",
     "start": "NODE_ENV=development nodemon --exec babel-node ./src/index.js",
-    "db-migrate": "npx sequelize db:migrate",
-    "db-undo-migration": "npx sequelize db:migrate:undo:all",
+    "db-migrate": "npx sequelize-cli db:migrate",
+    "db-undo-migration": "npx sequelize-cli db:migrate:undo:all",
     "db-seed-test": "NODE_ENV=testing npx sequelize-cli db:seed:undo:all && NODE_ENV=testing sequelize db:seed:all",
     "db-seed-dev": "npx sequelize-cli db:seed:undo:all && npx sequelize db:seed:all"
   },
@@ -34,6 +34,7 @@
     "node-geocoder": "^3.27.0",
     "nodemon": "^2.0.1",
     "path": "^0.12.7",
+    "pg": "^8.3.3",
     "sequelize": "^6.3.5",
     "sequelize-cli": "^6.2.0"
   }
