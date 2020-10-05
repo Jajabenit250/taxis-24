@@ -1,5 +1,5 @@
 {
-  "name": "j-taxis",
+  "name": "taxis-24",
   "version": "1.0.0",
   "description": "They would like to disrupt the taxi industry in Rwanda by providing a white-label solution to the",
   "main": "index.js",
@@ -20,9 +20,9 @@
   "author": "Benit Havugimana",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Jajabenit250/j-taxis/issues"
+    "url": "https://github.com/Jajabenit250/taxis-24/issues"
   },
-  "homepage": "https://github.com/Jajabenit250/j-taxis#readme",
+  "homepage": "https://github.com/Jajabenit250/taxis-24#readme",
   "dependencies": {
     "@babel/core": "^7.7.4",
     "@babel/node": "^7.7.4",
