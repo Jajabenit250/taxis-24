@@ -17,7 +17,7 @@ class RidersController {
   static async getSpecificRider(req, res) {
     try {
       const { riderId } = req.params;
-      const rider = await Queries.findOne(db.user, {
+      const rider = await Queries.findOneRecord(db.user, {
         role: "rider",
         id: riderId,
       });
@@ -31,8 +31,13 @@ class RidersController {
   }
   static async getClosestDrivers(req, res) {
     try {
-      const { location } = req.params;
-      const decodeLocation = geoDecode(location);
+      const { driverId } = req.params;
+      const driverData = await Queries.findOneRecord(db.user, {
+        id: driverId,
+      });
+      const decodeLocation = await Queries.findOneRecord(db.location, {
+        id: driverData.locationId,
+      });
       const locationCoordinate = {
         lat: decodeLocation.latitude,
         lon: decodeLocation.longitude,

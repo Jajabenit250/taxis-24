@@ -40,13 +40,13 @@ Open terminal from your computer
 
 `- GET /drivers/:available - Get a list of all available drivers`
 
-`- GET /drivers/:locationId - Get a list of all available drivers within 3km for a specific location`
+`- GET /drivers/closeto/:locationId - Get a list of all available drivers within 3km for a specific location`
 
 `- GET /drivers/:driverId  - Get a specific driver by ID`
 
 `- POST /trips - Create a new ‘Trip’ request by assigning a driver to a rider`
 
-`- GET /trips/:tripId/:action  - Complete a trip`
+`- PUT /trips/:tripId/:action  - Complete a trip`
 
 `- GET /trips/:active  Get a list of all active Trips`
 

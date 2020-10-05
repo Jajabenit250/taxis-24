@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) =>
-    queryInterface.bulkInsert("Locations", [
+    queryInterface.bulkInsert("locations", [
       {
         latitude: -1.9389523,
         longitude: 30.0869735,
@@ -69,5 +69,5 @@ module.exports = {
       },
     ]),
   down: (queryInterface, Sequelize) =>
-    queryInterface.bulkDelete("Locations", null, {}),
+    queryInterface.bulkDelete("locations", null, {}),
 };

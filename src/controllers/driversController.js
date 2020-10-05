@@ -2,14 +2,14 @@ import response from "../helpers/response";
 import Queries from "../services/Queries";
 import Distance from "geo-distance";
 import db from "../database/models/index";
-import { geoDecode, reverse } from "../helpers/addressDecoder";
+import Decode from "../helpers/addressDecoder";
 import Service from "../services/index";
 
 class DriversController {
   static async getDrivers(req, res) {
     try {
       const drivers = await Service.GetUser({role: 'driver'});
-      if (drivers.count > 0) {
+      if (drivers) {
         return response.success(res, "List of Drivers", 200, drivers);
       }
       return response.error(res, "No Driver found", 404);
@@ -23,7 +23,7 @@ class DriversController {
         role: "driver",
         status: "available",
       });
-      if (drivers.count > 0) {
+      if (drivers) {
         return response.success(res, "List of available Drivers", 200, drivers);
       }
       return response.error(res, "No Available Driver", 404);
@@ -33,8 +33,10 @@ class DriversController {
   }
   static async getDriversWithinLocation(req, res) {
     try {
-      const { location } = req.params;
-      const decodeLocation = geoDecode(location);
+      const { locationId } = req.params;
+      const decodeLocation = await Queries.findOneRecord(db.location, {
+        id: locationId,
+      });
       const locationCoordinate = {
         lat: decodeLocation.latitude,
         lon: decodeLocation.longitude,
@@ -43,36 +45,36 @@ class DriversController {
         role: "driver",
         status: "available",
       });
-      if (drivers.count > 0) {
+      if (drivers) {
         const availableDrivers = drivers.map(async (driver) => {
-          const driverLocation = await Queries.findOne(db.location, {
+          let closerDriver = [];
+          const driverLocation = await Queries.findOneRecord(db.location, {
             id: driver.locationId,
           });
           const cordinate = {
             lat: driverLocation.latitude,
             lon: driverLocation.longitude,
           };
-          var myLoToDriverLo = Distance.between(locationCoordinate, cordinate);
-          if (myLoToDriverLo > Distance("3 km")) {
-            return driver;
+          const myLoToDriverLo = Distance.between(locationCoordinate, cordinate);
+          if (myLoToDriverLo < Distance("3 km")) {
+            closerDriver.push(driver.dataValues);
+          }
+          if (availableDrivers) {
+            return response.success(
+              res,
+              "List of available Drivers",
+              200,
+              closerDriver
+            );
           } else {
-            return null;
+            return response.error(
+              res,
+              "No Available Driver Within that location",
+              404
+            );
           }
         });
-        if (availableDrivers.length > 0) {
-          return response.success(
-            res,
-            "List of available Drivers",
-            200,
-            availableDrivers
-          );
-        } else {
-          return response.error(
-            res,
-            "No Available Driver Within that location",
-            404
-          );
-        }
+        console.log(availableDrivers);
       }
       return response.error(res, "No Available Driver", 404);
     } catch (e) {
@@ -82,7 +84,7 @@ class DriversController {
   static async getSpecificDrivers(req, res) {
     try {
       const { driverId } = req.params;
-      const driver = await Queries.findOne(db.user, {
+      const driver = await Queries.findOneRecord(db.user, {
         role: "driver",
         id: driverId,
       });

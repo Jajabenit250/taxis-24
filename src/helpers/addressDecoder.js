@@ -5,8 +5,7 @@ let options = {
   };
 let geoCoder = nodeGeocoder(options);
 
-class decode {
-
+class Decode {
   static geoDecode(location) {
     geoCoder.geocode(location).then((res)=> {
       return res;
@@ -26,4 +25,4 @@ class decode {
 
 }
 
-export default decode;
+export default Decode;
