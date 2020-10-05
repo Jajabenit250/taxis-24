@@ -1,5 +1,6 @@
 import response from "../helpers/response";
 import Queries from "../services/Queries";
+import db from "../database/models";
 
 class RidersController {
   static async getRiders(req, res) {

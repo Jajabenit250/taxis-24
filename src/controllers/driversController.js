@@ -1,12 +1,14 @@
 import response from "../helpers/response";
 import Queries from "../services/Queries";
 import Distance from "geo-distance";
+import db from "../database/models/index";
 import { geoDecode, reverse } from "../helpers/addressDecoder";
+import Service from "../services/index";
 
 class DriversController {
   static async getDrivers(req, res) {
     try {
-      const drivers = await Queries.findAll(db.user, { role: "driver" });
+      const drivers = await Service.GetUser({role: 'driver'});
       if (drivers.count > 0) {
         return response.success(res, "List of Drivers", 200, drivers);
       }

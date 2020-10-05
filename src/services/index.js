@@ -6,6 +6,10 @@ class TaxiServices {
     return Queries.create(db.level, data);
   }
 
+  static async GetUser(data) {
+    return Queries.findAll(db.user, data);
+  }
+
   static async findLevelById(id) {
     try {
       return await db.level.findOne({
@@ -16,4 +20,4 @@ class TaxiServices {
     }
   }
 }
-export default LevelServices;
+export default TaxiServices;

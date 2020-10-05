@@ -36,7 +36,25 @@ Open terminal from your computer
 3. Run `npm run migrate` to create your database tables and insert seeds.
 5. Run `npm start` to start the app in development environment. 
 ## API endpoints
-`- POST / - Create user account`
-`- GET / - Signing In a registered user`
+`- GET /drivers - Get a list of all drivers`
+
+`- GET /drivers/:available - Get a list of all available drivers`
+
+`- GET /drivers/:locationId - Get a list of all available drivers within 3km for a specific location`
+
+`- GET /drivers/:driverId  - Get a specific driver by ID`
+
+`- POST /trips - Create a new ‘Trip’ request by assigning a driver to a rider`
+
+`- GET /trips/:tripId/:action  - Complete a trip`
+
+`- GET /trips/:active  Get a list of all active Trips`
+
+`- GET /riders  - Get a list of all riders`
+
+`- GET /riders/:ridersId  - Get a specific rider by ID`
+
+`- GET /riders/closest/:driverId - For a specific driver, get a list of the 3 closest drivers`
+
 # Author
  [Havugimana Benit](https://github.com/Jajabenit250)

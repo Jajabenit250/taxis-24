@@ -10,12 +10,12 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', Route);
-app.use((req, res) => res.status(404).send({
-  status: 404,
-  error: 'route Not Found!',
+app.use((req, res) => res.status(200).send({
+  status: 200,
+  error: 'Welcome to taxi 24',
 }));
 
 config(); 
 const port = process.env.PORT || 8080;
-app.listen(port, () => console.log('Soma Africa APP', `Server is running on http://localhost:${port}`));
+app.listen(port, () => console.log('taxis 24 api', `Server is running on http://localhost:${port}`));
 export default app;
