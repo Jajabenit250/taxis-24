@@ -1,4 +1,6 @@
 # Taxi24
+[![Build Status](https://travis-ci.com/Jajabenit250/taxis-24.svg?branch=main)](https://travis-ci.com/Jajabenit250/taxis-24)
+[![Coverage Status](https://coveralls.io/repos/github/Jajabenit250/taxis-24/badge.svg?branch=main)](https://coveralls.io/github/Jajabenit250/taxis-24?branch=main)
 ## Description
 Taxi24 is a new startup based in Kigali. They would like to disrupt the taxi industry in Rwanda by providing a white-label solution to the
 existing taxi companies and hotels. Practically, they will build a set of APIs that other companies can use to manage their fleet of drivers and
