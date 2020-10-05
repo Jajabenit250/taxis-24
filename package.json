@@ -9,12 +9,13 @@
     "start": "NODE_ENV=development nodemon --exec babel-node ./src/index.js",
     "db-migrate": "npx sequelize-cli db:migrate",
     "db-undo-migration": "npx sequelize-cli db:migrate:undo:all",
+    "migrate": "sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all",
     "db-seed-test": "NODE_ENV=testing npx sequelize-cli db:seed:undo:all && NODE_ENV=testing sequelize db:seed:all",
     "db-seed-dev": "npx sequelize-cli db:seed:undo:all && npx sequelize db:seed:all"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jajabenit250/j-taxis.git"
+    "url": "git+https://github.com/Jajabenit250/taxis-24.git"
   },
   "author": "Benit Havugimana",
   "license": "ISC",

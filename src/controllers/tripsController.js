@@ -15,17 +15,38 @@ class TripsController {
         to: goingTo,
       });
       if (trip) {
-        // trip cost and create invoices after save invoice to invoice table
+        const kiloMeterCost = 500;
+        const comingFromLocation = await Queries.findOrCreate(db.location, {
+          id: driver.comingFrom,
+        });
+        const cordinateFrom = {
+          lat: comingFromLocation.latitude,
+          lon: comingFromLocation.longitude,
+        };
+        const goingToLocation = await Queries.findOne(db.location, {
+          id: driver.goingTo,
+        });
+        const cordinateTo = {
+          lat: goingToLocation.latitude,
+          lon: goingToLocation.longitude,
+        };
+        var myLoToDriverLo = Distance.between(cordinateFrom, cordinateTo);
+        const price = kiloMeterCost * myLoToDriverLo;
+        const tripInvoice = await Queries.create(db.invoice, {
+          tripId: trip.id,
+          cost: price,
+          status: trip.id,
+        });
         return response.successMessage(
           res,
           "Trip Successfully Created",
           200,
-          messages
+          tripInvoice
         );
       }
-      return response.errorMessage(res, "Error while Creating the Trip", 404);
+      return response.error(res, "Error while Creating the Trip", 404);
     } catch (e) {
-      return response.errorMessage(res, e.message, 500);
+      return response.error(res, e.message, 500);
     }
   }
   static async completeTrip(req, res) {
@@ -36,12 +57,12 @@ class TripsController {
         { status: action },
         { id: tripId }
       );
-      if (messages.count > 0) {
-        return response.successMessage(res, "Contact Message", 200, messages);
+      if (complete) {
+        return response.success(res, "Contact Message", 200, complete);
       }
-      return response.errorMessage(res, "No message found", 404);
+      return response.error(res, "No message found", 404);
     } catch (e) {
-      return response.errorMessage(res, e.message, 500);
+      return response.error(res, e.message, 500);
     }
   }
   static async getActiveTrips(req, res) {
