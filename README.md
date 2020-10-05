@@ -56,5 +56,9 @@ Open terminal from your computer
 
 `- GET /riders/closest/:driverId - For a specific driver, get a list of the 3 closest drivers`
 
+## Heroku Link and Postman Collection
+
+https://taxi-24.herokuapp.com/
+
 # Author
  [Havugimana Benit](https://github.com/Jajabenit250)

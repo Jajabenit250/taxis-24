@@ -9,7 +9,7 @@ describe('App Tests', () => {
   it('should return the homepage', (done) => {
     chai.request(app).get('/')
       .end((err, res) => {
-        res.should.have.status(404);
+        res.should.have.status(200);
         done();
       });
   });
