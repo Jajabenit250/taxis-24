@@ -1,9 +1,10 @@
 import express from 'express';
+import RidersController from "../controllers/ridersController";
 
 const router = express.Router();
 
-// router.get('/', console.log("list of all riders"));
-// router.get('/:riderId', console.log("get specific rider"));
-// router.get('/closest/:driverId', console.log("get 3 closest driver to driverId"));
+router.get('/', RidersController.getRiders);
+router.get('/:riderId', RidersController.getSpecificRider);
+router.get('/closest/:driverId', RidersController.getClosestDrivers);
 
 export default router;

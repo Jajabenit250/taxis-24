@@ -35,7 +35,7 @@ class RidersController {
             }
             const drivers = await Queries.findAll(db.user, { role: 'driver', status: 'available' });
             if (drivers.count > 0) {
-             const availableDrivers = drivers.map(driver => {
+             const availableDrivers = drivers.map(async driver => {
                 const driverLocation = await Queries.findAll(db.location, { id: driver.locationId });
                 const cordinate = {
                     lat: driverLocation.latitude,

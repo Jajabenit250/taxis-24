@@ -1,9 +1,10 @@
 import express from 'express';
+import DriversController from "../controllers/driversController";
 
 const router = express.Router();
-// router.get('/', console.log("list of all drivers"));
-// router.get('/:available', console.log("list of all available drivers"));
-// router.get('/:location', console.log("list of all drivers within 3km location"));
-// router.get('/:driverId', console.log("get specific driver"));
+router.get('/', DriversController.getDrivers);
+router.get('/:available', DriversController.getAvailableDrivers);
+router.get('/:location', DriversController.getDriversWithinLocation);
+router.get('/:driverId', DriversController.getSpecificDrivers);
 
 export default router;
