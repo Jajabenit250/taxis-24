@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "stable"
 install:
-  - npm ci
+  - npm i
 cache:
   directories:
     - node_modules
@@ -12,7 +12,7 @@ addons:
   postgresql: "9.4"
 before_script:
   - psql -c "CREATE DATABASE taxi_test;" -U postgres
-  - npm run pretest-travis
+  - npm run migrate
 script:
   - npm test
 after_success:

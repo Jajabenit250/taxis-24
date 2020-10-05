@@ -36,6 +36,7 @@
     "geo-distance": "^0.2.0",
     "node-geocoder": "^3.27.0",
     "nodemon": "^2.0.1",
+    "nyc": "^15.1.0",
     "path": "^0.12.7",
     "pg": "^8.3.3",
     "sequelize": "^6.3.5",
