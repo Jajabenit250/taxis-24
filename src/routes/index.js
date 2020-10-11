@@ -7,7 +7,7 @@ import TripsRoute from './tripsRoute';
 const Router = express.Router();
 
 Router.use('/drivers', DriversRoute);
-Router.use('/trips', RidersRoute);
-Router.use('/riders', TripsRoute);
+Router.use('/riders', RidersRoute);
+Router.use('/trips', TripsRoute);
 
 export default Router;

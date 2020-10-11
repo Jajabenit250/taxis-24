@@ -6,7 +6,7 @@ class RidersController {
   static async getRiders(req, res) {
     try {
       const drivers = await Queries.findAll(db.user, { role: "rider" });
-      if (drivers.count > 0) {
+      if (drivers) {
         return response.success(res, "List of all Riders", 200, drivers);
       }
       return response.error(res, "No Rider found", 404);
@@ -21,7 +21,7 @@ class RidersController {
         role: "rider",
         id: riderId,
       });
-      if (rider.count > 0) {
+      if (rider) {
         return response.success(res, "Rider Information", 200, rider);
       }
       return response.error(res, "that specific Rider is not available", 404);
@@ -46,7 +46,7 @@ class RidersController {
         role: "driver",
         status: "available",
       });
-      if (drivers.count > 0) {
+      if (drivers) {
         const availableDrivers = drivers.map(async (driver) => {
           const driverLocation = await Queries.findAll(db.location, {
             id: driver.locationId,

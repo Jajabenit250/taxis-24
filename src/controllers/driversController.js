@@ -46,8 +46,7 @@ class DriversController {
         status: "available",
       });
       if (drivers) {
-        const availableDrivers = drivers.map(async (driver) => {
-          let closerDriver = [];
+        const availableDrivers = await Promise.all(drivers.map(async (driver) => {
           const driverLocation = await Queries.findOneRecord(db.location, {
             id: driver.locationId,
           });
@@ -57,26 +56,27 @@ class DriversController {
           };
           const myLoToDriverLo = Distance.between(locationCoordinate, cordinate);
           if (myLoToDriverLo < Distance("3 km")) {
-            closerDriver.push(driver.dataValues);
+            return driver.dataValues;
           }
-          if (availableDrivers) {
-            return response.success(
-              res,
-              "List of available Drivers",
-              200,
-              closerDriver
-            );
-          } else {
-            return response.error(
-              res,
-              "No Available Driver Within that location",
-              404
-            );
-          }
-        });
-        console.log(availableDrivers);
+        }));
+        if (availableDrivers.length > 0) {
+          return response.success(
+            res,
+            "List of available Drivers",
+            200,
+            availableDrivers
+          );
+        } else {
+          return response.error(
+            res,
+            "No Available Driver Within that location",
+            404
+          );
+        }
       }
-      return response.error(res, "No Available Driver", 404);
+      else{
+        return response.error(res, "No Available Driver", 404);
+      }
     } catch (e) {
       return response.error(res, e.message, 500);
     }
@@ -88,7 +88,7 @@ class DriversController {
         role: "driver",
         id: driverId,
       });
-      if (driver.count > 0) {
+      if (driver) {
         return response.success(res, "Driver Information", 200, driver);
       }
       return response.error(res, "that specific driver is not available", 404);
