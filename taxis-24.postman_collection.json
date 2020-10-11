@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "3fdba13b-e76a-4c21-b8b4-4af78222f4d2",
+		"name": "taxis-24",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Drivers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://taxi-24.herokuapp.com/drivers",
+					"protocol": "https",
+					"host": [
+						"taxi-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"drivers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Available Drivers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://taxi-24.herokuapp.com/drivers/available",
+					"protocol": "https",
+					"host": [
+						"taxi-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"drivers",
+						"available"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Available 3km for specific location",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://taxi-24.herokuapp.com//drivers/closeto/2",
+					"protocol": "https",
+					"host": [
+						"taxi-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"",
+						"drivers",
+						"closeto",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific Driver",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://taxi-24.herokuapp.com/drivers/5",
+					"protocol": "https",
+					"host": [
+						"taxi-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"drivers",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Trip",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"riderId\": 2,\n    \"driverId\": 3,\n    \"comingFrom\": 6,\n    \"goingTo\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://taxi-24.herokuapp.com/trips",
+					"protocol": "https",
+					"host": [
+						"taxi-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"trips"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Complete a Trip",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://taxi-24.herokuapp.com/2/complete",
+					"protocol": "https",
+					"host": [
+						"taxi-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"2",
+						"complete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Active Trips",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://taxi-24.herokuapp.com/trips/active",
+					"protocol": "https",
+					"host": [
+						"taxi-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"trips",
+						"active"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Riders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://taxi-24.herokuapp.com/riders",
+					"protocol": "https",
+					"host": [
+						"taxi-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"riders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Specific Rider by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://taxi-24.herokuapp.com/riders/6",
+					"protocol": "https",
+					"host": [
+						"taxi-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"riders",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Closest Drivers for a specific Driver",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://taxi-24.herokuapp.com/riders/closest/1",
+					"protocol": "https",
+					"host": [
+						"taxi-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"riders",
+						"closest",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

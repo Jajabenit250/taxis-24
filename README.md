@@ -48,7 +48,7 @@ Open terminal from your computer
 
 `- PUT /trips/:tripId/:action  - Complete a trip`
 
-`- GET /trips/:active  Get a list of all active Trips`
+`- GET /trips/active  Get a list of all active Trips`
 
 `- GET /riders  - Get a list of all riders`
 
@@ -59,6 +59,8 @@ Open terminal from your computer
 ## Heroku Link and Postman Collection
 
 https://taxi-24.herokuapp.com/
+
+Import File `taxis-24/taxis-24.postman_collection.json` to your Postman Collection and Tests All Functionalities With Heroku Deployed Application
 
 # Author
  [Havugimana Benit](https://github.com/Jajabenit250)

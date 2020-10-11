@@ -12,11 +12,9 @@ class Queries {
   }
   static async update(table, data, condition) {
     try {
-      const datas = await table.update(data // { isVerified: true, }; 
-        , {
-        where: condition, // { email }
+      const datas = await table.update(data, {
+        where: condition, 
         returning: true,
-        plain: true,
       });
       return datas;
     } catch (error) {

@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.post('/', TripsController.createTrip);
 router.put('/:tripId/:action', TripsController.completeTrip);
-router.get('/:active', TripsController.getActiveTrips);
+router.get('/active', TripsController.getActiveTrips);
 
 export default router;
